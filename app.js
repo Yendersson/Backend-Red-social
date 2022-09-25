@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
 
 
-// DB.connect();
+DB.connect();
 
 app.use('/auth', routerAuth);
 app.use('/profile', routerProfile);
