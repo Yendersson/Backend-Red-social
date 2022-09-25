@@ -1,4 +1,4 @@
-import 'dotenv/config.js'
+// import 'dotenv/config.js'
 import sql from 'mysql';
 
 const con = sql.createConnection({
