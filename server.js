@@ -7,6 +7,7 @@ import routerAuth from './routes/auth.js';
 import routerPosted from './routes/post.js';
 import routerProfile from './routes/profile.js';
 import routerComentar from './routes/commentarios.js';
+import { PORT } from './config.js';
 
 const app = express();
 
@@ -29,7 +30,7 @@ app.use('/feed', routerPosted);
 app.use('/comments', routerComentar);
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = PORT;
 
 const server = app.listen(PORT, ()=> console.log('servidor express escuchando en puerto', PORT));
 server.on('error', error => console.log(error.message));

@@ -1,11 +1,12 @@
 // import 'dotenv/config.js'
 import sql from 'mysql';
+import { DB_HOST, DB_NAME, DB_PASSWORD, DB_USER } from './config';
 
 const con = sql.createConnection({
-    host:'us-cdbr-east-06.cleardb.net',
-    user: 'b45275e215bfec',
-    password: '18f09d94',
-    database: 'heroku_74b6a8f406e6604'
+    host:DB_HOST,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_NAME
     // host: 'localhost',
     // user: 'root',
     // password: '95790078Yc*',
