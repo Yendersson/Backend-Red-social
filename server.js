@@ -30,7 +30,7 @@ app.use('/feed', routerPosted);
 app.use('/comments', routerComentar);
 
 
-const PORT = PORT;
+const WEB_PORT = PORT;
 
-const server = app.listen(PORT, ()=> console.log('servidor express escuchando en puerto', PORT));
+const server = app.listen(WEB_PORT, ()=> console.log('servidor express escuchando en puerto', PORT));
 server.on('error', error => console.log(error.message));
