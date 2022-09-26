@@ -1,11 +1,12 @@
 // import 'dotenv/config.js'
 import sql from 'mysql';
-import { DB_HOST, DB_NAME, DB_PASSWORD, DB_USER } from './config';
+import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER } from './config';
 
 const con = sql.createConnection({
     host:DB_HOST,
     user: DB_USER,
     password: DB_PASSWORD,
+    port: DB_PORT,
     database: DB_NAME
     // host: 'localhost',
     // user: 'root',
