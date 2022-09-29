@@ -6,7 +6,7 @@ import transporter from '../mail/nodemailer.js';
 //--------------------------------------------------------------- REGISTER ------------------------------------------------------------------------------
 const register = (req, res) => {
     let {email, nombre, username, password } = req.body;
-    const insertUser = `INSERT INTO USER (EMAIL, NOMBRE, USERNAME, PASSWORD) VALUES(?, ?, ?, ?)`;
+    const insertUser = `INSERT INTO user (EMAIL, NOMBRE, USERNAME, PASSWORD) VALUES(?, ?, ?, ?)`;
 
     DB.con.query(insertUser, [email,nombre,username,password], (error, results, fields) => {
         if(error) return res.json({err: error, msg:'los datos ingresados no cumplen los requisitos o se exeden a los mismos'});
@@ -40,7 +40,7 @@ const login = (req, res) => {
     console.log(req.body);
     let {email,password} = req.body;
     
-    const existData = `SELECT * FROM USER WHERE EMAIL = ? and PASSWORD = ?`;
+    const existData = `SELECT * FROM user WHERE EMAIL = ? and PASSWORD = ?`;
 
     DB.con.query(existData, [email, password], (error, results, fields) => {
         if(error) throw error;

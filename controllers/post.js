@@ -5,11 +5,11 @@ const getPosted = (req, res) => {
     let {id} = req.params;
 
     if(id){
-        // const selectPostedByID = `SELECT * FROM POST WHERE ID_USER = ?`
+        // const selectPostedByID = `SELECT * FROM post WHERE ID_USER = ?`
 
-        const selectPostedByID = `SELECT USER.USERNAME, POST.CONTENIDO, POST.ID_USER, POST.ID_POST, POST.FECHA FROM POST
-        INNER JOIN USER ON USER.ID_USER = POST.ID_USER
-        WHERE POST.ID_USER = ?;`
+        const selectPostedByID = `SELECT user.USERNAME, post.CONTENIDO, post.ID_USER, post.ID_POST, post.FECHA FROM post
+        INNER JOIN user ON user.ID_USER = post.ID_USER
+        WHERE post.ID_USER = ?;`
 
         DB.con.query(selectPostedByID, [id], (error, results, fields) => {
             if(error) throw error;
@@ -19,8 +19,8 @@ const getPosted = (req, res) => {
     
     }else{
         // Todos los post de todos los usuarios
-        const selectPosted = `SELECT USER.USERNAME, POST.CONTENIDO, POST.ID_USER, POST.ID_POST, POST.FECHA FROM POST
-        INNER JOIN USER ON USER.ID_USER = POST.ID_USER;`;
+        const selectPosted = `SELECT user.USERNAME, post.CONTENIDO, post.ID_USER, post.ID_POST, post.FECHA FROM post
+        INNER JOIN user ON user.ID_USER = post.ID_USER;`;
 
         DB.con.query(selectPosted, (error, results, fields)=> {
             if(error) throw error;
@@ -38,7 +38,7 @@ const postPosted = (req, res) => {
 
     let fecha = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`;
 
-    const insertPos = `INSERT INTO POST(CONTENIDO, FECHA, ID_USER) VALUES(?,?,?)`;
+    const insertPos = `INSERT INTO post(CONTENIDO, FECHA, ID_USER) VALUES(?,?,?)`;
     
     DB.con.query(insertPos, [contenido, fecha, id], (error, results, fields) => {
 
@@ -52,7 +52,7 @@ const putPosted = (req, res) => {
     let {idPost} = req.params;
     let {user} = req.query;
     let {contenido} = req.body;
-    const updatePut = `UPDATE POST SET CONTENIDO = ? WHERE ID_POST = ? AND ID_USER = ?`
+    const updatePut = `UPDATE post SET CONTENIDO = ? WHERE ID_POST = ? AND ID_USER = ?`
 
     DB.con.query(updatePut, [contenido, idPost, user], (error, results, fields) => {
         if(error) res.json({err: error});
@@ -63,7 +63,7 @@ const putPosted = (req, res) => {
 const deletePosted = (req, res) => {
     let {idPost} = req.params;
     let {user} = req.query;
-    const deletepost = `DELETE FROM POST WHERE ID_POST = ? AND ID_USER = ?`
+    const deletepost = `DELETE FROM post WHERE ID_POST = ? AND ID_USER = ?`
 
     DB.con.query(deletepost, [idPost, user], (error, results, fields) => {
         if(error) throw error;

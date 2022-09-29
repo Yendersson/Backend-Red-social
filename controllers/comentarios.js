@@ -5,11 +5,11 @@ const getComments = (req, res) => {
     // El parametro post hace referencia al ID del post para la elaboracion de los comentarios
     let {post} = req.params;
 
-    const selectComents = `SELECT COMENTARIOS.COD_COMENTARIO, USER.USERNAME, COMENTARIOS.CONTENIDO, COMENTARIOS.FECHA, COMENTARIOS.ID_POST
-    FROM COMENTARIOS
-    INNER JOIN USER ON USER.ID_USER = COMENTARIOS.ID_USER
-    INNER JOIN POST ON POST.ID_POST = COMENTARIOS.ID_POST
-    WHERE COMENTARIOS.ID_POST = ?;`;
+    const selectComents = `SELECT comentarios.COD_COMENTARIO, user.USERNAME, comentarios.CONTENIDO, comentarios.FECHA, comentarios.ID_POST
+    FROM comentarios
+    INNER JOIN user ON user.ID_USER = comentarios.ID_USER
+    INNER JOIN post ON post.ID_POST = comentarios.ID_POST
+    WHERE comentarios.ID_POST = ?;`;
 
     connectDB.con.query(selectComents,[post], (error, results, fields) => {
         if(error) throw error;
@@ -29,7 +29,7 @@ const getComments = (req, res) => {
     let fecha = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`;
     
 
-    const insertComment = `INSERT INTO COMENTARIOS(ID_USER, ID_POST, CONTENIDO, FECHA) VALUES(?,?,?,?)`;
+    const insertComment = `INSERT INTO comentarios(ID_USER, ID_POST, CONTENIDO, FECHA) VALUES(?,?,?,?)`;
 
     connectDB.con.query(insertComment, [user, post, contenido, fecha], (error, results, fields) => {
         if(error) throw error;
@@ -42,7 +42,7 @@ const getComments = (req, res) => {
 //     let {comentario} = req.params;
 //     let {contenido} = req.body;
 
-//     const updateComment = `UPDATE COMENTARIOS SET CONTENIDO = ? WHERE COD_COMENTARIO = ?`;
+//     const updateComment = `UPDATE comentarios SET CONTENIDO = ? WHERE COD_COMENTARIO = ?`;
 //     connectDB.con.query(updateComment, [contenido, comentario], (error, results, fields) => {
 //         if(error) throw error;
 
@@ -53,7 +53,7 @@ const getComments = (req, res) => {
 //  const deleteComments = (req, res) => {
 //     let {comentario} = req.params;
 
-//     const removeComment = `DELETE FROM COMENTARIOS WHERE COD_COMENTARIO = ?`;
+//     const removeComment = `DELETE FROM comentarios WHERE COD_COMENTARIO = ?`;
 //     connectDB.con.query(removeComment, [comentario], (error, results, fields) => {
 //         if(error) throw error;
 //         res.json(results);

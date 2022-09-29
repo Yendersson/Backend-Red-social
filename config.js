@@ -1,6 +1,6 @@
 export const PORT = process.env.PORT || 8080;
-export const DB_HOST = process.env.DB_HOST || 'localhost';
-export const DB_USER = process.env.DB_USER || 'root';
-export const DB_PASSWORD = process.env.DB_PASSWORD || '95790078Yc*';
-export const DB_NAME = process.env.DB_NAME || 'postest';
+export const DB_HOST = 'sql10.freesqldatabase.com' || 'localhost';
+export const DB_USER = 'sql10522378' || 'root';
+export const DB_PASSWORD = 'HWVgAM1T8J' || '95790078Yc*';
+export const DB_NAME = 'sql10522378' || 'postest';
 export const DB_PORT = process.env.DB_PORT || '3306';

@@ -1,1 +1,8 @@
+#ignora los node_modules
 node_modules
+
+#Ignora el config js
+config.js
+
+#ignora la carpeta .env
+.env
