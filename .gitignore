@@ -2,7 +2,7 @@
 node_modules
 
 #Ignora el config js
-config.js
+.config.js
 
 #ignora la carpeta .env
 .env
