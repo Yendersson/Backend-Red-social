@@ -4,3 +4,5 @@ export const DB_USER = 'ud1ooqvzwbdswkeh' || 'root';
 export const DB_PASSWORD = 'jL4V8T5bsZy4EMibTL12' || '95790078Yc*';
 export const DB_NAME = 'bjza3jclxjbuu5d4fwqn' || 'postest';
 export const DB_PORT = process.env.DB_PORT || '3306';
+
+// ignorando los archivos
