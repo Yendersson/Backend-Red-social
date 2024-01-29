@@ -5,7 +5,7 @@ const getComments = (req, res) => {
     // El parametro post hace referencia al ID del post para la elaboracion de los comentarios
     let {post} = req.params;
 
-    const selectComents = `SELECT comentarios.COD_COMENTARIO, user.USERNAME, comentarios.CONTENIDO, comentarios.FECHA, comentarios.ID_POST
+    const selectComents = `SELECT comentarios.COD_COMENTARIO, user.USERNAME, user.IMAGE,comentarios.CONTENIDO, comentarios.FECHA, comentarios.ID_POST
     FROM comentarios
     INNER JOIN user ON user.ID_USER = comentarios.ID_USER
     INNER JOIN post ON post.ID_POST = comentarios.ID_POST
